@@ -20,18 +20,6 @@
     from tb_redpack
     where id = #{id,jdbcType=INTEGER}
   </select>
-  
-  <!-- 查询红包剩余个数 -->
-  <select id="selectRemainByPrimaryKey" resultType="java.lang.Integer" parameterType="java.lang.Integer">
-    select remain
-    from tb_redpack
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <update id="updateRemainRedPack" parameterType="java.lang.Integer">
-  	update tb_redpack set remain = remain - 1
-  	where id = #{id,jdbcType=INTEGER}
-  </update>
-  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from tb_redpack
     where id = #{id,jdbcType=INTEGER}
@@ -136,5 +124,16 @@
       sendDate = #{senddate,jdbcType=TIMESTAMP},
       version = #{version,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 查询红包剩余个数 -->
+  <select id="selectRemainByPrimaryKey" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select remain
+    from tb_redpack
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <!-- 扣减红包剩余个数 -->
+  <update id="updateRemainRedPack" parameterType="java.lang.Integer">
+  	update tb_redpack set remain = remain - 1
+  	where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
