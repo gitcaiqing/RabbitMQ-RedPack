@@ -8,6 +8,7 @@ CREATE TABLE tb_redpack(
 	amount decimal(10,2) not null comment '红包金额',
 	unitAmount decimal(10,2) not null comment '单个红包金额',
 	total int not null comment '红包个数',
+	remain int not null comment '红包剩余个数',
 	sendDate datetime not null comment '发红包时间',
 	version int default 0 not null comment '版本控制，扩展乐观锁使用',
 	primary key(id)
@@ -25,7 +26,7 @@ CREATE TABLE tb_user_redpack(
 );
 
 #插入测试数据
-INSERT INTO tb_redpack(userId,amount,unitAmount,total,sendDate)
-VALUES("9999",100000.00,10.00,10000,now());
+INSERT INTO tb_redpack(userId,amount,unitAmount,total,remain,sendDate)
+VALUES("999999",100000.00,100.00,1000,1000,now());
 
 
